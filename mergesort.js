@@ -5,52 +5,90 @@ function split(wholeArray) {
 		return wholeArray
 	}
 
+	//debugger
+
 	let firstHalf = wholeArray.slice(0, half)
 	let secondHalf = wholeArray.slice(half)
 
-	/* your code here to define the firstHalf and secondHalf arrays */
+/* your code here to define the firstHalf and secondHalf arrays */
+	
 
 	return [firstHalf, secondHalf];
 }
 
 function merge(firstHalf, secondHalf) { //[[3, 2], [1, 5, 6]
-	let sortedArr = []
+	// let sortedArr = []
 
-	while(firstHalf.length && secondHalf.length){
+	// while (firstHalf.length && secondHalf.length) {
+		
+	// 	if(firstHalf[0]>secondHalf[0]){
+	// 		sortedArr.push(secondHalf.shift()) 
+	// 	}else{
+	// 		sortedArr.push(firstHalf.shift())
+	// 	}
+	// }	
+	// return sortedArr.concat(firstHalf,secondHalf)
 
-		if(firstHalf[0]>secondHalf[0]){
-			sortedArr.push(secondHalf.shift()) 
-		}else{
-			sortedArr.push(firstHalf.shift())
+	var i = 0;
+	var j = 0;
+	var sortedArr = [];
+
+	// firstHalf = [1, 3];
+	//secondHalf = [6, 9, 8]
+
+	while (i < firstHalf.length || j < secondHalf.length) {
+
+		if (i === firstHalf.length) {
+			// j is the only index firstHalf
+			sortedArr.push(secondHalf[j]);
+			j++;
 		}
-	}	
-	return sortedArr.concat(firstHalf,secondHalf)
+		else if (j === secondHalf.length || firstHalf[i] <= secondHalf[j]) {
+			sortedArr.push(firstHalf[i]);
+			i++;
+		} else {
+			sortedArr.push(secondHalf [j]);
+			j++;
+		}
 
+
+	}
+   // console.log('FROM MERGE => ', sortedArr)
+
+	return sortedArr;
 }
+
 
 function mergeSort(wholeArray) {
 	
-	let [firstHalf, secondHalf] = split(wholeArray);
 	let finalArr;
-	console.log('first', firstHalf)
-	console.log('second', secondHalf)
-	let fl = firstHalf.length
-	let sl = secondHalf.length
+	let left;
+	let right;
 
-	console.log(merge(firstHalf, secondHalf))
-	// while(fl && sl){
-	// 	finalArr = mergeSort(merge(firstHalf, secondHalf))
-	// 	// fl --
-	// 	sl --
-	// }
+	if (wholeArray.length === 1) {
+		return wholeArray
+	} else {
+	  [left, right] = split(wholeArray)
+	}
+	
+	console.log('mergeSort(left) ==> ', mergeSort(left), 'mergeSort(right) ==> ', mergeSort(right), `\n`)
 
-	return finalArr
-	// return mergeSort(merge(split(wholeArray)[0], split(wholeArray)[1])); //[[3, 2], [1, 5, 6]
+	
+
+	
+	return (merge(mergeSort(left), mergeSort(right)))
 
 
-	// return (
-	// 	mergeSort(merge(firstHalf, secondHalf))// takes two arrats
-			
-	// )
+	
+
+	
+
+
+	// finalArr = mergeSort(split(wholeArray));
+	
+
+
+
+	
 
 }
