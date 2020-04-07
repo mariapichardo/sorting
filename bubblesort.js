@@ -9,18 +9,20 @@ function bubbleSort(arr) {
 		for (let i = 0; i < arr.length - swapNum; i++){
 
 			if (arr[i] > arr[i + 1]) {
-				swapFun(arr, i, i + 1)
-				
+				arr = swapFun(arr, i, i + 1)
+				anotherSwap = true
 			}
-			swapNum++
-			anotherSwap = true
 
 		}
+
+		swapNum++
 	}
 
 	return arr
 	
 }
+
+
 
 function swapFun(arr, idx1, idx2) {
 	let temp = arr[idx1];
