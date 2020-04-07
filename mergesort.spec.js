@@ -1,0 +1,22 @@
+describe('Split Array function', function () {
+	let arrA = [1,3,6,7,8]
+
+	it('is able to split an array into two halves', function () {
+		expect(split(arrA)).toEqual([[1,3], [6,7,8]])
+		
+	});
+
+	it('It handle empty array', function () {
+		expect(split([])).toEqual([])
+
+	});
+});
+	
+describe('Merge function', function () {
+	let arrA = [1, 3];
+	let arrB = [6, 7, 8]
+
+	it('is able to merge two sorted arrays into one sorted array', function () {
+		expect(merge(arrA, arrB)).toEqual([1,3,6,7,8])
+	});
+});
